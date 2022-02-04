@@ -21,5 +21,21 @@ class Instructor(Member):
     def __init__(self, fullname, bio, skills):
         super().__init__(fullname)
         self.bio = bio
-        self.skills = skills
+        self.skills = []
 
+    def add_skill(self, skill):
+        self.skills.append(skill)
+
+class Workshop():
+    def __init__(self, date, subject, instructor = [], students = []):
+        self.date = date
+        self.subject = subject
+        self.instructor = instructor
+        self.students = students
+    
+    def add_participant(self, member):
+        if (type(member).__name__) == "Instructor":
+            self.instructor.append(member)
+        elif (type(member).__name__) == "Student":
+            self.students.append(member)
+            
